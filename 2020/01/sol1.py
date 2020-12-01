@@ -1,18 +1,10 @@
 #!/usr/bin/env python3
 
-data = sorted(map(int, open("input").read().splitlines()))
+def find_pair(nums, target=2020):
+    for first in nums:
+        if (second := target - first) in nums:
+            return first * second
 
-left = 0
-right = len(data) - 1
-
-s = data[left] + data[right]
-
-while s != 2020:
-    if s > 2020:
-        right -= 1
-    else:
-        left += 1
-    s = data[left] + data[right]
-
-print(data[left] * data[right])
-print(f"first={data[left]} second={data[right]}")
+if __name__ == "__main__":
+    nums = set(map(int, open("input")))
+    print(find_pair(nums))
